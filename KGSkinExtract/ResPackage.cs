@@ -43,8 +43,8 @@ namespace KugouSkinRead
             FMemStream.Write((Int32)fl.Length);
 
             String dat = System.Environment.GetEnvironmentVariable("TEMP") + "\\~res.dat";
-            String dat2 = System.Environment.GetEnvironmentVariable("TEMP") + "\\~res2.dat";
-
+            FileStream datfile = File.Open(dat, FileMode.Open);
+            BinaryWriter datStream = new BinaryWriter(datfile);
             Tools.CmdHelper.ExecuteCmd("echo a 2>\"" + dat + "\"");
 
             long current = 0;
@@ -57,22 +57,26 @@ namespace KugouSkinRead
                 FMemStream.Write(Position);
                 FMemStream.Write((Int32)resfile.Length);
                 Position += (Int32)resfile.Length;
+                byte[] resdata = new byte[resfile.Length];
+                resfile.Read(resdata, 0, (int)resfile.Length);
+                datStream.Write(resdata, 0, resdata.Length);
                 resfile.Close();                
-
-                Tools.CmdHelper.ExecuteCmd("copy /b \"" + dat + "\"+\"" + this.Path + file + "\" \"" + dat2 + "\"");
-                Tools.CmdHelper.ExecuteCmd("DEL \"" + dat + "\"");
-                Tools.CmdHelper.ExecuteCmd("REN \"" + dat2 + "\" \"~res.dat\"");
                 
                 if (onPackageProgress != null)
                     onPackageProgress(fl.Length, ++current, file);
             }
 
-            fs.Close();
+            datStream.Close();
+            datfile.Close();
 
-            Tools.CmdHelper.ExecuteCmd("copy /b \"" + FileName + "\"+\"" + dat + "\" \"" + dat2 + "\"");
-            Tools.CmdHelper.ExecuteCmd("DEL \"" + FileName + "\"");
-            Tools.CmdHelper.ExecuteCmd("MOVE \"" + dat2 + "\" \"" + FileName + "\"");
-   
+            datfile = File.Open(dat, FileMode.Open);
+
+            BinaryReader restmp = new BinaryReader(datfile);
+            byte[] data = new byte[datfile.Length];
+            restmp.Read(data, 0, (int)datfile.Length);
+            FMemStream.Write(data, 0, data.Length);
+            datfile.Close();
+            fs.Close();
         }
 
         private ArrayList GetFileNames(DirectoryInfo dirInfo)

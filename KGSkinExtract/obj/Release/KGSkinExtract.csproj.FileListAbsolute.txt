@@ -1,0 +1,10 @@
+G:\Workspace\C#\KGSkinExtract-master - 副本\KGSkinExtract\bin\Release\KGSkinExtract.exe.config
+G:\Workspace\C#\KGSkinExtract\KGSkinExtract\bin\Release\KGSkinExtract.exe.config
+G:\Workspace\C#\KGSkinExtract\KGSkinExtract\bin\Release\KGSkinExtract.exe
+G:\Workspace\C#\KGSkinExtract\KGSkinExtract\bin\Release\KGSkinExtract.pdb
+G:\Workspace\C#\KGSkinExtract\KGSkinExtract\obj\Release\KGSkinExtract.csprojResolveAssemblyReference.cache
+G:\Workspace\C#\KGSkinExtract\KGSkinExtract\obj\Release\KugouSkinRead.frmKGSkinExtract.resources
+G:\Workspace\C#\KGSkinExtract\KGSkinExtract\obj\Release\KGSkinExtract.Properties.Resources.resources
+G:\Workspace\C#\KGSkinExtract\KGSkinExtract\obj\Release\KGSkinExtract.csproj.GenerateResource.Cache
+G:\Workspace\C#\KGSkinExtract\KGSkinExtract\obj\Release\KGSkinExtract.exe
+G:\Workspace\C#\KGSkinExtract\KGSkinExtract\obj\Release\KGSkinExtract.pdb
